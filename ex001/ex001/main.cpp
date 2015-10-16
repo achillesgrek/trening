@@ -1,8 +1,17 @@
 #include <iostream>
 #include <ctime>
+#include <string>
 
 
 using namespace std;
+
+void wypisz(int tab[], int rozmiar, string nametable)
+{
+	for (int i = 0; i < rozmiar; i++)
+	{
+		cout << "This is a "<< nametable << tab[i] << endl;
+	}
+}
 
 int main()
 {
@@ -19,29 +28,52 @@ int main()
 	{
 		randomtab[i] = rand() % 101;
 	}
-
-	int * tableAlfa = new int[];
-	int * tableBeta = new int[];
-	int * tableTheta = new int[];
+	int n1 = 0;
+	int n2 = 0;
+	int n3 = 0;
+	int * tableAlfa = new int[n1];
+	int * tableBeta = new int[n2];
+	int * tableTheta = new int[n3];
 
 
 	for (int i = 0; i < 10; i++)
 	{
+		/// 1 3 5 4
 		if (randomtab[i] % 2 == 0)
-			tableAlfa[i] = randomtab[i];
+		{
+			// i = 4
+			tableAlfa[n1] = randomtab[i];
+			n1++;
+		}
 		else if (randomtab[i] % 3 == 0)
-			tableBeta[i] = randomtab[i];
+		{
+			tableBeta[n2] = randomtab[i];
+			n2++;
+		}
 		else if (randomtab[i] % 5 == 0)
-			tableTheta[i] = randomtab[i];
+		{
+			tableTheta[n3] = randomtab[i];
+			n3++;
+		}
+	}
+	//delete randomtab;
+
+	wypisz(tableAlfa, n1, "tableAlfa: ");
+	wypisz(tableBeta, n2, "tableBeta: ");
+	wypisz(tableTheta, n3, "tableTheta: ");
+	
+	
+	
+	cout << "This is a random table: ";
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " " << randomtab[i];
 	}
 	delete randomtab;
+	delete tableAlfa;
+	delete tableBeta;
+	delete tableTheta;
 
-	for (int i = 0; i < 10; i++)
-	{
-		cout << "This is a table Alfa" << tableAlfa[i] << endl;
-		cout << "This is a table Beta" << tableBeta[i] << endl;
-		cout << "This is a table Theta" << tableTheta[i] << endl;
-	}
-	
 	return 0;
 }
+
